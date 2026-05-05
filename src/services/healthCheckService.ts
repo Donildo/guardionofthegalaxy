@@ -1,32 +1,39 @@
 import httpClient from '@/lib/httpClient';
-import { ApiResponse, HealthCheckResponse } from '@/shared/types';
+import type { AxiosError } from 'axios';
+import { ENDPOINTS } from '@/shared/constants';
+import type { ApiResponse, HealthCheckResponse } from '@/shared/types';
 
 /**
  * Health Check Service
- * Service for monitoring backend API health
+ * Service for monitoring backend API health status
  */
 
 class HealthCheckService {
   /**
    * Check backend health status
+   * Connects to the real FastAPI backend at GET /health
    */
   async checkHealth(): Promise<HealthCheckResponse> {
     try {
-      const response =
-        await httpClient.get<ApiResponse<HealthCheckResponse>>('/health');
+      const response = await httpClient.get<ApiResponse<HealthCheckResponse>>(
+        ENDPOINTS.HEALTH
+      );
 
       if (response.data?.data) {
         return response.data.data;
       }
 
-      // Fallback response if backend returns different structure
+      // Fallback: backend returned 200 but with a different structure
       return {
         status: 'healthy',
         timestamp: new Date().toISOString(),
       };
     } catch (error) {
-      console.error('Health check failed:', error);
-      // Return unhealthy status on error
+      const axiosError = error as AxiosError;
+      console.error(
+        '[HealthCheckService] Health check failed:',
+        axiosError.message
+      );
       return {
         status: 'unhealthy',
         timestamp: new Date().toISOString(),
@@ -35,7 +42,10 @@ class HealthCheckService {
   }
 
   /**
-   * Poll health status at intervals
+   * Poll health status at regular intervals
+   * @param interval - polling interval in ms (default: 30s)
+   * @param onStatusChange - callback when status changes
+   * @returns cleanup function to stop polling
    */
   pollHealth(
     interval: number = 30000,
@@ -53,7 +63,7 @@ class HealthCheckService {
       lastStatus = currentStatus;
     }, interval);
 
-    // Return function to stop polling
+    // Return cleanup function to stop polling
     return () => clearInterval(pollInterval);
   }
 }
