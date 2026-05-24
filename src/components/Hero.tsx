@@ -94,7 +94,16 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-start gap-4 animate-fade-in-up">
+          <div
+            className="flex flex-col sm:flex-row animate-fade-in-up gap-4 sm:gap-0"
+            style={{
+              width: '100%',
+              maxWidth: '478px',
+              minHeight: '55px',
+              justifyContent: 'space-between',
+              opacity: 1,
+            }}
+          >
             <button
               onClick={() => scrollToSection('cadastro')}
               className="hero-button"
@@ -122,13 +131,17 @@ const Hero = () => {
             >
               <span
                 style={{
+                  width: '162px',
+                  height: '23px',
                   fontFamily: "'Chakra Petch', sans-serif",
                   fontWeight: 700,
                   fontSize: '20px',
                   lineHeight: '100%',
                   letterSpacing: '0.04em',
                   textAlign: 'center',
-                  display: 'inline-block',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   whiteSpace: 'nowrap',
                   opacity: 1,
                 }}

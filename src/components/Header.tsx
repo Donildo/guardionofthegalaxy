@@ -1,5 +1,4 @@
-import logoImg from '../assets/guardioes logo.png';
-import raioImg from '../assets/raio 2.png';
+import raioImg from '../assets/raio 5.png';
 
 const Header = () => {
   return (
@@ -12,11 +11,6 @@ const Header = () => {
           className="w-12 h-12 object-contain opacity-85 pointer-events-none mix-blend-screen animate-pulse"
         />
 
-        <img
-          src={logoImg}
-          alt="Squad Logo"
-          className="w-16 h-auto object-contain relative z-10"
-        />
         <div className="flex flex-col leading-tight pt-1 relative z-10">
           <span
             className="text-[9px] font-bold text-[#b24fff] uppercase tracking-[0.3em] mb-0.5"

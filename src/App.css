@@ -99,17 +99,18 @@
   width: 226px;
   height: 55px;
   padding-top: 16px;
-  padding-right: 12px;
+  padding-right: 32px;
   padding-bottom: 16px;
-  padding-left: 12px;
+  padding-left: 32px;
   gap: 12px;
   opacity: 1;
   border-radius: 100px;
   border: 2px solid #ffffff4d;
   background: linear-gradient(90deg, rgba(185, 25, 188, 0.34) 0%, #170748 100%);
+  box-shadow: 7px 6px 32.5px 0px #ffffff1a;
   color: #ffffff;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 300ms ease-out;
   box-sizing: border-box;
 }
 
@@ -123,9 +124,9 @@
 .about-section {
   position: relative;
   background:
+    linear-gradient(254.64deg, #01000a 3.77%, #442b83 100%),
     linear-gradient(180deg, #01000a 0%, rgba(1, 0, 10, 0) 50.06%),
-    linear-gradient(0deg, #0a0e1a 0%, rgba(1, 0, 10, 0) 49.94%),
-    linear-gradient(254.64deg, #01000a 3.77%, #442b83 100%);
+    linear-gradient(0deg, #0a0e1a 0%, rgba(1, 0, 10, 0) 49.94%);
   width: 100%;
   box-sizing: border-box;
   padding-left: 24px;
@@ -136,18 +137,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 40px;
   opacity: 1;
 }
 
 @media (min-width: 1024px) {
   .about-section {
     max-width: 1440px;
+    height: 941px;
     margin: 0 auto;
-    min-height: 680px;
     padding-left: 80px;
     padding-right: 80px;
-    padding-top: 80px;
-    padding-bottom: 60px;
+    padding-top: 168px;
+    padding-bottom: 168px;
     box-shadow: 0px 4px 40px 0px #d946ef1a;
   }
 }
@@ -196,7 +198,8 @@
   .about-card {
     max-width: 1188px;
     width: 100%;
-    height: 426px;
+    min-height: 426px;
+    height: auto;
     padding-top: 51px;
     padding-bottom: 51px;
     padding-left: 38px;
@@ -217,8 +220,8 @@
   .hero-section {
     max-width: 1440px;
     margin: 0 auto;
-    height: 667px;
-    top: 6px;
+    height: 677px;
+    top: 0px;
   }
 }
 
@@ -232,14 +235,15 @@
   line-height: 150%;
   letter-spacing: 0.05em;
   color: #d1d5db;
-  gap: 10px;
+  gap: 32px;
   opacity: 1;
 }
 
 @media (min-width: 1024px) {
   .about-text-container {
-    width: 1112px;
-    height: 324px;
+    width: 100%;
+    min-height: 324px;
+    height: auto;
     font-size: 24px;
   }
 }
